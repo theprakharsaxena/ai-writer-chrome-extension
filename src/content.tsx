@@ -16,8 +16,6 @@ export const getStyle = () => {
   style.textContent = cssText
   return style
 }
-
-// top: 530px; left: 622px; position: absolute; transform: translate(-100%, -100%); z-index: 2147483644;
 const PlasmoOverlay = () => {
   const [position, setPosition] = useState({
     top: 0,
@@ -36,9 +34,7 @@ const PlasmoOverlay = () => {
     setUserText("")
     if (element) {
       const pTag = element.querySelector("p")
-      pTag.textContent = `Thank you for the opportunity! If you have any more
-      questions or if there's anything else I can help you with,
-      feel free to ask.`
+      pTag.textContent = `Thank you for the opportunity! If you have any more questions or if there's anything else I can help you with, feel free to ask.`
     }
   }
 
@@ -73,13 +69,12 @@ const PlasmoOverlay = () => {
     <>
       {isFocused && !aiModel && (
         <div
+          className="fixed cursor-pointer"
           style={{
-            position: "fixed",
-            top: position.top + position.height + "px",
-            left: position.left + position.width + "px",
-            zIndex: 99999,
-            transform: "translate(-100%, -100%)",
-            cursor: "pointer"
+            top: `${position.top + position.height}px`,
+            left: `${position.left + position.width}px`,
+            zIndex: "99999",
+            transform: "translate(-100%, -100%)"
           }}>
           <img
             src={icon}
@@ -92,30 +87,28 @@ const PlasmoOverlay = () => {
         <div
           className="fixed inset-0 z-50"
           style={{
-            top: !chats ? position.top - 100 + "px" : position.top - 200 + "px",
-            left: position.left + "px"
+            top: `${!chats ? position.top - 100 : position.top - 200}px`,
+            left: `${position.left}px`
           }}>
           <div
             className="fixed inset-0 bg-black opacity-50"
             onClick={() => setAIModel(!aiModel)}></div>
           <div
             className="relative bg-[#F9FAFB] flex flex-col p-3 rounded-lg"
-            style={{
-              width: position.width + 20 + "px"
-            }}>
+            style={{ width: `${position.width + 20}px` }}>
             {chats && (
               <div className="flex flex-col space-y-3 mb-3 text-[#666D80]">
                 <div className="flex justify-end">
                   <div
                     className="bg-[#DFE1E7] p-2 rounded-lg"
-                    style={{ width: position.width - 50 + "px" }}>
+                    style={{ width: `${position.width - 50}px` }}>
                     <p>{userText}</p>
                   </div>
                 </div>
                 <div className="flex justify-start">
                   <div
                     className="bg-[#DBEAFE] p-2 rounded-lg"
-                    style={{ width: position.width - 50 + "px" }}>
+                    style={{ width: `${position.width - 50}px` }}>
                     <p>
                       Thank you for the opportunity! If you have any more
                       questions or if there's anything else I can help you with,
